@@ -1,0 +1,68 @@
+﻿@model IEnumerable<DentistAppointmentManager.Models.Patients>
+
+@{
+    ViewBag.Title = "PatientSearch";
+}
+
+<h2>PatientSearch</h2>
+
+<form style="padding-top:7px;" action="@Url.Action("PatientSearch", "Patient")" method="post">
+    <div style="background-color:grey;">
+        <div class="row rowCustom">
+            <b>First Name</b>
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="textbox" name="firstName" id="firstName" />
+        </div>
+
+        <div class="row rowCustom">
+            <div class="col-md-2">
+                <b>Last Name</b>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="textbox" name="lastName" id="lastName" />
+            </div>
+        </div>
+        <div class="submit button">
+            <input type="submit" style="padding-bottom:2px;border-radius:6px;width:100px;"
+                   value="Submit" />
+        </div>
+
+    </div>
+
+</form>
+@if (Model.Any())
+{
+
+
+    <table id="patientsearch" class="table" border: 1px solid black;
+           border-collapse: collapse; style="width:100px;">
+
+
+        <tr>
+            <th> Patient HRN </th>
+            <th> First Name </th>
+            <th> Last Name </th>
+            <th> Contact </th>
+            <th> Gender </th>
+            <th> DOB </th>
+        </tr>
+        @foreach (var m in Model)
+        {
+
+            <tr>
+                <td>@m.patientHRN</td>
+                <td>@m.firstName</td>
+                <td>@m.lastName</td>
+                <td>@m.contactNumber</td>
+                <td> @m.gender </td>
+                <td> @m.dob </td>
+            </tr>
+
+
+        }
+    </table>
+}
+
+
+
